@@ -50,10 +50,10 @@ function useMqtt({
 
     return () => {
       if (client) {
-        // topicHandlers.forEach((th) => {
-        //   client.unsubscribe(th.topic)
-        // })
-        // client.end()
+        topicHandlers.forEach((th) => {
+          client.unsubscribe(th.topic)
+        })
+        client.end()
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

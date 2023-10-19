@@ -1,3 +1,5 @@
+"use client"
+
 import { useState, useRef } from 'react'
 import type { MqttClient } from 'mqtt'
 import useMqtt from '../lib/useMqtt'
@@ -13,7 +15,7 @@ export default function Home() {
 
   const incommingMessageHandlers = useRef([
     {
-      topic: process.env.NEXT_PUBLIC_MQTT_TOPIC || 'topic1',
+      topic: process.env.NEXT_PUBLIC_MQTT_TOPIC,
       handler: (msg: string) => {
         addMessage(msg)
       },
@@ -41,7 +43,7 @@ export default function Home() {
       return
     }
 
-    client.publish(process.env.NEXT_PUBLIC_MQTT_TOPIC || 'topic1', '1st message from component')
+    client.publish(process.env.NEXT_PUBLIC_MQTT_TOPIC, '1st message from component')
   }
 
   return (
