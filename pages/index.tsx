@@ -13,7 +13,7 @@ export default function Home() {
 
   const incommingMessageHandlers = useRef([
     {
-      topic: 'topic1',
+      topic: process.env.NEXT_PUBLIC_MQTT_TOPIC || 'topic1',
       handler: (msg: string) => {
         addMessage(msg)
       },
@@ -41,7 +41,7 @@ export default function Home() {
       return
     }
 
-    client.publish('topic1', '1st message from component')
+    client.publish(process.env.NEXT_PUBLIC_MQTT_TOPIC || 'topic1', '1st message from component')
   }
 
   return (
