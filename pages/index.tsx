@@ -5,7 +5,7 @@ import useMqtt from '../lib/useMqtt'
 export default function Home() {
   const [incommingMessages, setIncommingMessages] = useState<any[]>([])
   const addMessage = (message: any) => {
-    setIncommingMessages((incommingMessages) => [...incommingMessages, message])
+    setIncommingMessages((incommingMessages: any) => [...incommingMessages, message])
   }
   const clearMessages = () => {
     setIncommingMessages(() => [])
